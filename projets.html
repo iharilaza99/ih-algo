@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asa Vita - Andriamizana Iharilaza</title>
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --primary-dark: #047857;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --card-bg: #ffffff;
+            --gray-color: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #065f46, #10b981);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--primary-color);
+        }
+
+        .project-card h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: #ecfdf5;
+            color: var(--primary-dark);
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            margin-top: 0.8rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: var(--dark-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Lisitry ny Tetikasa & Asa Vita</h1>
+        <p>Ireo rafitra sy rindrankajy novolavolaina</p>
+    </header>
+
+    <div class="container">
+        
+        <a href="portefolio.html" class="btn-back">← Miverina amin'ny Pejy Lehibe</a>
+
+        <div class="project-card">
+            <h3>Rafitra Fitantanana Sekoly (IH Algo)</h3>
+            <p>Rindrankajy nomerika natokana ho an'ny fitantanana ny firaketan'ny mpianatra, kajy naoty, fizarana tatitra, ary fanaovana antontan-taratasy mandeha amin'ny tambajotra an-toerana sy Internet.</p>
+            <div>
+                <span class="tech-tag">PHP / PDO</span>
+                <span class="tech-tag">MariaDB</span>
+                <span class="tech-tag">JavaScript</span>
+                <span class="tech-tag">Dompdf</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Tranonkala Fanabeazana (IH-Educ)</h3>
+            <p>Sehatra fianarana sy fizarana fitaovana ara-pianarana sy antontan-taratasy ho an'ny mpianatra sy mpampianatra, mampiasa rafitra maoderina.</p>
+            <div>
+                <span class="tech-tag">Markdown</span>
+                <span class="tech-tag">MkDocs</span>
+                <span class="tech-tag">GitHub Pages</span>
+            </div>
+        </div>
+
+        <div class="project-card">
+            <h3>Rakitra & Fitaovana Fanaovana Fanadinana (LaTeX)</h3>
+            <p>Famoronana antontan-taratasy sy taratasim-panadinana misy rafitra matematika be pitsiny, natao tamin'ny alalan'ny LaTeX sy TeXstudio.</p>
+            <div>
+                <span class="tech-tag">LaTeX</span>
+                <span class="tech-tag">TikZ</span>
+                <span class="tech-tag">TeXstudio</span>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Andriamizana Iharilaza. Zo voatokana.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Andriamizana Iharilaza</title>
+    <!-- FontAwesome ho an'ny icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --primary-dark: #047857;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --card-bg: #ffffff;
+            --gray-color: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #065f46, #10b981);
+            background-size: 200% 200%;
+            animation: gradientBG 10s ease infinite;
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            clip-path: ellipse(100% 90% at 50% 0%);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #d1fae5;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -3rem auto 3rem auto;
+            padding: 0 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        section {
+            background: var(--card-bg);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: fadeIn 1s ease-out;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(16, 185, 129, 0.15);
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            margin-bottom: 1.2rem;
+            font-size: 1.6rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .skills-list li {
+            background: #ecfdf5;
+            color: var(--primary-dark);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            border: 1px solid #a7f3d0;
+        }
+
+        .skills-list li:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.08);
+        }
+
+        .event-card {
+            border: 1px solid #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-top: 1.2rem;
+            background: #ffffff;
+        }
+
+        .event-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #0f172a;
+        }
+        .btn-secondary:hover {
+            background: #1e293b;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            background: #f8fafc;
+            padding: 1.2rem;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #ecfdf5;
+            border-color: #a7f3d0;
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .contact-item a, .contact-item p {
+            color: var(--dark-color);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--gray-color);
+            font-size: 0.95rem;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Andriamizana Iharilaza</h1>
+        <p>Full-Stack Developer | Mpampianatra & Mpiaro ny Tontolo Iainana</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Mombamomba ahy -->
+        <section>
+            <h2>Mombamomba Ahy</h2>
+            <p>Miarahaba! Izaho dia mpamorona tranonkala sy rindrankajy ary mpampianatra monina eto <strong>Madagaskara</strong>. Anko an'ireo asa ara-teknolojia dia manokan-tena amin'ny fampandrosoana maharitra sy ny fiarovana ny tontolo iainana ihany koa aho sady mpamorona ny sehatra nomerika <strong>IH Algo</strong>.</p>
+            
+            <!-- Rohy mankany amin'ny pejy IH Algo vao namboarina -->
+            <a href="index.html" class="btn btn-secondary">
+                <i class="fa-solid fa-code"></i> Tsidiho ny Pejy IH Algo & Sites Rattachés
+            </a>
+        </section>
+
+        <!-- Hetsika Tontolo Iainana & Fambolen-kazo -->
+        <section>
+            <h2>Hetsika Fambolen-kazo & Tontolo Iainana</h2>
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=800&q=80" alt="Fambolen-kazo" class="event-img">
+                <h3>Ezaka Fambolen-kazo sy Fanadiovana</h3>
+                <p>Mandray anjara mavitrika amin'ny fampiroboroboana ny fambolen-kazo sy ny fanatsarana ny tontolo iainana eto an-toerana izahay, mba ho lovan-jafy maitso ho an'ny taranaka fara mandimby.</p>
+                
+                <a href="tontolo-iainana.html" class="btn">
+                    <i class="fa-solid fa-book-open"></i> Jereo ny Tantara sy Sary Maromaro
+                </a>
+            </div>
+        </section>
+
+        <!-- Fahaiza-manao -->
+        <section>
+            <h2>Fahaiza-manao & Teknolojia</h2>
+            <ul class="skills-list">
+                <li>PHP / PDO / Laravel</li>
+                <li>JavaScript / TypeScript</li>
+                <li>MySQL / MariaDB / PostgreSQL</li>
+                <li>HTML5 / CSS3 / Tailwind</li>
+                <li>Git & GitHub</li>
+                <li>Linux Systems / Bash</li>
+                <li>LaTeX / TeXstudio</li>
+            </ul>
+        </section>
+
+        <!-- Tetikasa sy Asa Vita -->
+        <section>
+            <h2>Ireo Asa Vita</h2>
+            <p>Manana tetikasa sy rafitra nomerika maro voavaha aho, toy ny fitantanana sekoly, tranomboky nomerika, ary tranonkala fampianarana.</p>
+            <a href="projets.html" class="btn">
+                <i class="fa-solid fa-folder-open"></i> Hijery ny Pejy Feno momba ny Asa Vita
+            </a>
+        </section>
+
+        <!-- Fifandraisana -->
+        <section>
+            <h2>Fifandraisana</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <div>
+                        <strong>Toerana:</strong>
+                        <p>Madagaskara</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    <div>
+                        <strong>Mailaka:</strong>
+                        <p><a href="mailto:iharilazaa@gmail.com">iharilazaa@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-solid fa-phone"></i>
+                    <div>
+                        <strong>Finday:</strong>
+                        <p><a href="tel:0349922667">034 99 22 667</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp:</strong>
+                        <p><a href="https://wa.me/261349922667" target="_blank">+261 34 99 22667</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <i class="fa-brands fa-facebook"></i>
+                    <div>
+                        <strong>Facebook:</strong>
+                        <p><a href="https://facebook.com/search/top?q=IH+Algo" target="_blank">IH Algo</a></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Andriamizana Iharilaza. Namboarina tamin'ny fitiavana teto Madagaskara.</p>
+    </footer>
+
+</body>
+</html>

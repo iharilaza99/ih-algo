@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="mg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tontolo Iainana & Fambolen-kazo - Andriamizana Iharilaza</title>
+    <style>
+        :root {
+            --primary-color: #10b981;
+            --primary-dark: #047857;
+            --dark-color: #0f172a;
+            --light-color: #f8fafc;
+            --card-bg: #ffffff;
+            --gray-color: #64748b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0f172a, #065f46, #10b981);
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .btn-back {
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            background: var(--dark-color);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--primary-dark);
+        }
+
+        .story-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+        }
+
+        .story-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .story-section p {
+            margin-bottom: 1rem;
+        }
+
+        /* Fizarana sary maromaro (Gallery) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            background: #fff;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .gallery-caption {
+            padding: 0.8rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            text-align: center;
+            background: #f8fafc;
+        }
+
+        .donate-box {
+            background: #ecfdf5;
+            border-left: 5px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin-top: 2rem;
+        }
+
+        .btn-donate {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .btn-donate:hover {
+            background: var(--primary-dark);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-color);
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Tantara & Hetsika Fambolen-kazo</h1>
+        <p>Fiarovana ny tontolo iainana sy fampandrosoana maharitra eto Madagaskara</p>
+    </header>
+
+    <div class="container">
+        
+        <a href="portefolio.html" class="btn-back">← Miverina amin'ny Pejy Lehibe</a>
+
+        <!-- Tantara / Historique -->
+        <div class="story-section">
+            <h2>Ny Dia sy ny Tantarantsika</h2>
+            <p>Ny fambolen-kazo dia tsy hoe fanaovana fotsiny, fa adidy masina amin'ny taranaka fara mandimby sy amin'ny firenentsika. Tsapa hatrany ny fiovan'ny toetr'andro, ary ny fandraisana anjara amin'ny fanaingoana sy famelomana indray ny ala no antoky ny ho avy mamiratra.</p>
+            <p>Nandritra izay taona lasa izay dia nisy ny ezaka natao tamin'ny fikarakarana zana-kazo, fanentanana ny tanora, ary ny fanatanterahana hetsika eny an-toerana hiarovana ny zavaboary.</p>
+        </div>
+
+        <!-- Sary Maromaro / Gallery -->
+        <div class="story-section">
+            <h2>Tahirin-tsary avy amin'ireo Hetsika</h2>
+            <p>Ireto ny sary sasany mampiseho ny ezaka sy ny firaisankina nandritra ny fambolen-kazo sy ny fanadiovana:</p>
+            
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=600&q=80" alt="Fambolen-kazo 1">
+                    <div class="gallery-caption">Fikarakarana sy fizarana zana-kazo</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=600&q=80" alt="Fambolen-kazo 2">
+                    <div class="gallery-caption">Ezaka iombonana eny an-tsaha</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&w=600&q=80" alt="Fambolen-kazo 3">
+                    <div class="gallery-caption">Fanaraha-maso ny fitomboan'ny hazo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Antso ho an'ny Tsara Sitrapo / Famatsiana -->
+        <div class="donate-box">
+            <h2>🤝 Antso ho an'ny Tsara Sitrapo</h2>
+            <p>Mba hahafahantsika manitatra hatrany izao hetsika izao, mividy fitaovana, ary mikarakara ny zana-kazo mandra-pioriny tsara, dia mandray am-pifaliana tanteraka ny fanohanana na famatsiana avy amin'ireo malala-tanana sy tsara sitrapo izahay.</p>
+            <a href="https://wa.me/261349922667?text=Miarahaba,%2520te-hanohana%2520sy%2520handray%2520anjara%2520amin'ny%2520hetsika%2520fambolen-kazo%2520aho." target="_blank" class="btn-donate">Hanao Fanohanana / Fiaraha-miasa</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Andriamizana Iharilaza. Zo voatokana.</p>
+    </footer>
+
+</body>
+</html>
