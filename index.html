@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- AOS Animation Library CDN -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- PDF.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
 
@@ -23,7 +25,7 @@
             <nav class="hidden md:flex space-x-6 text-sm font-medium">
                 <a href="#presentation" class="hover:text-indigo-300 transition">À propos</a>
                 <a href="#stats" class="hover:text-indigo-300 transition">Impact</a>
-                <a href="#liens" class="hover:text-indigo-300 transition">Sites rattachés</a>
+                <a href="#pdf-viewer" class="hover:text-indigo-300 transition">PDF Live</a>
                 <a href="#contact" class="hover:text-indigo-300 transition">Contact</a>
             </nav>
         </div>
@@ -39,9 +41,9 @@
                 Solution centralisée conçue pour l'optimisation des parcours d'apprentissage, la gestion administrative et la mise à disposition de ressources pédagogiques.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <a href="#liens" class="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition duration-300 flex items-center space-x-2 transform hover:-translate-y-1">
-                    <i class="fa-solid fa-link"></i>
-                    <span>Accéder aux sites rattachés</span>
+                <a href="#pdf-viewer" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg transition duration-300 flex items-center space-x-2 transform hover:-translate-y-1">
+                    <i class="fa-solid fa-file-pdf"></i>
+                    <span>Voir les documents PDF</span>
                 </a>
                 <a href="#contact" class="bg-white/10 hover:bg-white/20 text-white border border-white/30 font-semibold px-6 py-3 rounded-lg transition duration-300 backdrop-blur-sm">
                     Nous contacter
@@ -118,89 +120,63 @@
         </div>
     </section>
 
-    <!-- Section Liens des Sites Rattachés (Optimisé GitHub Pages) -->
-    <section id="liens" class="py-20 px-4 bg-slate-100/60 border-y border-slate-200">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16" data-aos="fade-up">
-                <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Ressources & Accès GitHub</span>
-                <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mt-2">Sites & Ressources Rattachés</h2>
-                <div class="w-20 h-1 bg-indigo-600 mx-auto mt-3 rounded"></div>
-                <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
-                    Explorez les différentes plateformes, documentations et portails hébergés sy connectés à l'écosystème IH Algo.
-                </p>
+    <!-- SECTION VISUALISEUR PDF LIVE -->
+    <section id="pdf-viewer" class="py-20 px-4 max-w-6xl mx-auto">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <span class="bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Visualisation Directe</span>
+            <h2 class="text-3xl md:text-4xl font-bold text-indigo-900 mt-2">Lecteur PDF en direct</h2>
+            <div class="w-20 h-1 bg-indigo-600 mx-auto mt-3 rounded"></div>
+            <p class="text-slate-600 mt-4 max-w-2xl mx-auto">
+                Consultez vos documents TS 2027 directement sur la page ou ouvrez-les en mode plein écran.
+            </p>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-lg border border-slate-200 overflow-hidden" data-aos="fade-up">
+            <!-- Selector and Controls -->
+            <div class="bg-slate-100 p-4 border-b border-slate-200 flex flex-wrap gap-4 items-center justify-between">
+                <div class="flex items-center space-x-3 w-full sm:w-auto">
+                    <label for="pdf-select" class="font-semibold text-slate-700 text-sm whitespace-nowrap"><i class="fa-solid fa-folder-open text-indigo-600 mr-1"></i> Document :</label>
+                    <select id="pdf-select" onchange="loadPdf(this.value)" class="bg-white border border-slate-300 text-slate-800 text-sm rounded-lg focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2.5 font-medium">
+                        <option value="./Recueil TS 2027.pdf">Recueil TS 2027.pdf</option>
+                        <option value="./Résumé TS 2027.pdf">Résumé TS 2027.pdf</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button onclick="openModal()" class="bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold px-4 py-2 rounded-lg transition flex items-center space-x-1">
+                        <i class="fa-solid fa-expand"></i>
+                        <span>Plein Écran</span>
+                    </button>
+                    <a id="download-link" href="./Recueil TS 2027.pdf" download target="_blank" class="bg-slate-700 hover:bg-slate-800 text-white text-xs font-semibold px-4 py-2 rounded-lg transition flex items-center space-x-1">
+                        <i class="fa-solid fa-download"></i>
+                        <span>Télécharger</span>
+                    </a>
+                </div>
             </div>
 
-            <div class="grid md:grid-cols-3 gap-8">
-                
-                <!-- Lien 1 : Documentation IH-Educ -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 flex flex-col justify-between hover:border-indigo-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-blue-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold px-3 py-1 rounded-full flex items-center space-x-1">
-                                <i class="fa-brands fa-github text-sm"></i>
-                                <span>GitHub Pages</span>
-                            </span>
-                            <div class="w-12 h-12 bg-blue-50 group-hover:bg-blue-600 group-hover:text-white rounded-xl flex items-center justify-center text-blue-600 transition duration-300">
-                                <i class="fa-solid fa-book-open text-xl"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition">IH-Educ (Doc)</h3>
-                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-                            Site de documentation technique et pédagogique hébergé sur GitHub Pages (MkDocs & Markdown).
-                        </p>
-                    </div>
-                    <a href="https://iharilaza99.github.io/ih-educ/" target="_blank" class="w-full bg-slate-50 hover:bg-indigo-600 hover:text-white text-indigo-700 border border-slate-200 hover:border-indigo-600 font-semibold py-3 px-4 rounded-xl text-center text-sm transition duration-300 flex items-center justify-center space-x-2">
-                        <span>Visiter le site</span>
-                        <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Lien 2 : Bibliothèque Numérique -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 flex flex-col justify-between hover:border-emerald-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden" data-aos="fade-up" data-aos-delay="200">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-emerald-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold px-3 py-1 rounded-full">Ressources PDF</span>
-                            <div class="w-12 h-12 bg-emerald-50 group-hover:bg-emerald-600 group-hover:text-white rounded-xl flex items-center justify-center text-emerald-600 transition duration-300">
-                                <i class="fa-solid fa-folder-tree text-xl"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition">Bibliothèque Numérique</h3>
-                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-                            Plateforme de stockage et de consultation des fichiers PDF de mathématiques, physique et informatique.
-                        </p>
-                    </div>
-                    <a href="./tontolo-iainana.html" class="w-full bg-slate-50 hover:bg-emerald-600 hover:text-white text-emerald-700 border border-slate-200 hover:border-emerald-600 font-semibold py-3 px-4 rounded-xl text-center text-sm transition duration-300 flex items-center justify-center space-x-2">
-                        <span>Accéder à la biblio</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-
-                <!-- Lien 3 : Portfolio Professionnel -->
-                <div class="bg-white rounded-2xl p-8 shadow-sm border border-slate-200 flex flex-col justify-between hover:border-purple-500 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group relative overflow-hidden" data-aos="fade-up" data-aos-delay="300">
-                    <div class="absolute top-0 left-0 w-2 h-full bg-purple-500"></div>
-                    <div>
-                        <div class="flex items-center justify-between mb-6">
-                            <span class="bg-purple-50 text-purple-700 border border-purple-200 text-xs font-bold px-3 py-1 rounded-full">Portfolio</span>
-                            <div class="w-12 h-12 bg-purple-50 group-hover:bg-purple-600 group-hover:text-white rounded-xl flex items-center justify-center text-purple-600 transition duration-300">
-                                <i class="fa-solid fa-user-tie text-xl"></i>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-purple-600 transition">Portfolio Professionnel</h3>
-                        <p class="text-slate-600 text-sm mb-6 leading-relaxed">
-                            Vitrine présentant les réalisations en développement web, les projets scolaires et les initiatives communautaires.
-                        </p>
-                    </div>
-                    <a href="./portefolio.html" class="w-full bg-slate-50 hover:bg-purple-600 hover:text-white text-purple-700 border border-slate-200 hover:border-purple-600 font-semibold py-3 px-4 rounded-xl text-center text-sm transition duration-300 flex items-center justify-center space-x-2">
-                        <span>Voir le portfolio</span>
-                        <i class="fa-solid fa-arrow-right text-xs"></i>
-                    </a>
-                </div>
-
+            <!-- Inline Embed / Viewer -->
+            <div class="relative w-full h-[650px] bg-slate-200 flex items-center justify-center">
+                <iframe id="pdf-iframe" class="w-full h-full border-0" src="./Recueil TS 2027.pdf"></iframe>
             </div>
         </div>
     </section>
+
+    <!-- MODAL POPUP POUR LE PDF LIVE -->
+    <div id="pdf-modal" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-50 hidden flex flex-col justify-center items-center p-4">
+        <div class="bg-white w-full max-w-5xl h-[90vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
+            <!-- Modal Header -->
+            <div class="bg-indigo-900 text-white px-6 py-4 flex justify-between items-center">
+                <h3 id="modal-title" class="font-bold flex items-center space-x-2 text-lg">
+                    <i class="fa-solid fa-file-pdf text-red-400"></i>
+                    <span>Aperçu du document PDF</span>
+                </h3>
+                <button onclick="closeModal()" class="text-white/70 hover:text-white text-2xl font-bold focus:outline-none">&times;</button>
+            </div>
+            <!-- Modal Body -->
+            <div class="flex-1 w-full bg-slate-100">
+                <iframe id="modal-iframe" class="w-full h-full border-0" src=""></iframe>
+            </div>
+        </div>
+    </div>
 
     <!-- Section Contact -->
     <section id="contact" class="py-20 px-4 max-w-4xl mx-auto" data-aos="fade-up">
@@ -272,6 +248,27 @@
             once: true,
             offset: 50,
         });
+
+        // Script hitantanana ny Live PDF Viewer
+        function loadPdf(url) {
+            document.getElementById('pdf-iframe').src = url;
+            document.getElementById('download-link').href = url;
+        }
+
+        function openModal() {
+            const currentUrl = document.getElementById('pdf-iframe').src;
+            const selectElement = document.getElementById('pdf-select');
+            const selectedTitle = selectElement.options[selectElement.selectedIndex].text;
+            
+            document.getElementById('modal-iframe').src = currentUrl;
+            document.getElementById('modal-title').innerHTML = `<i class="fa-solid fa-file-pdf text-red-400 mr-2"></i> ${selectedTitle}`;
+            document.getElementById('pdf-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('pdf-modal').classList.add('hidden');
+            document.getElementById('modal-iframe').src = '';
+        }
     </script>
 </body>
 </html>
